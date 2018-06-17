@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>3D Watermarking</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
@@ -28,25 +28,324 @@
 					<h2>Watermarking of Models</h2>
 					<h3>Destined to 3D Printing</h3>
 					<h3>by Deformation of Surfaces</h3>
-					<small>Presented by Antoine Prieëls</small>
-					<br/>
-					<small>Supervised by Benoît Macq</small>
+					<p>Presented by Antoine Prieëls</p>
+					<p>Supervised by Benoît Macq</p>
 				</section>
 
 				<section>
-					<h4>Table of Ccntents</h4>
+					<h4>Table of Contents</h4>
+					<ul>
+						<li style="margin-bottom: 0">Digital Models Representation and Processing</li>
+						<ul>
+							<li>Mesh Representation</li>
+							<li>Digital Watermarking</li>
+							<li>Watermarking of 3D models</li>
+							<li>Use cases</li>
+							<li>Watermarking Algorithm Evaluation</li>
+							<li>Scope of this work</li>
+						</ul>
+						<li style="margin-bottom: 0">Watermarking Algorithms</li>
+						<ul>
+							<li>Volume Moments</li>
+							<li>Spectral Decomposition</li>
+							<li>Adapting Spectral Decomposition to Additive Manufacturing</li>
+						</ul>
+						<li style="margin-bottom: 0">Comparison of the Algorithms</li>
+						<li style="margin-bottom: 0">Future Work</li>
+						<li style="margin-bottom: 0">Summary</li>
+					</ul>
 				</section>
 
 				<section>
 					<h4>Mesh Representation</h4>
+
+					<ul style="width: 100%; margin-bottom: 0.5em">
+						<li style="margin-bottom: 0">3D models are usually defined using the "mesh" representation. A mesh is defined by two kinds of information:</li>
+					</ul>
+					<div style="width: 48%; border: 2px solid #fff; float: left;">
+						<div style="width: 100%; color: #222; background: #fff"><strong>Geometry</strong></div>
+						<ul style="width: 85%; margin-top: 0.5em; margin-bottom: 0.5em"><li style="margin-bottom: 0">Set of vertices described by their 3D coordinates</li></ul>
+						<img src="img/bunny_geometry.png">
+					</div>
+					<div style="width: 48%; border: 2px solid #fff; float: right;">
+						<div style="width: 100%; color: #222; background: #fff"><strong>Connectivity</strong></div>
+						<ul style="width: 85%; margin-top: 0.5em; margin-bottom: 0.5em"><li style="margin-bottom: 0">Set of faces that link the vertices to one another</li></ul>
+						<img src="img/bunny_connectivity.png">
+					</div>
 				</section>
 
 				<section>
 					<h4>Digital Watermarking</h4>
+					<ul>
+						<li>Information hiding: process of hiding messages or data into another container</li>
+						<hr>
+						<li>We differenciate:
+							<ul>
+								<li>Steganography: The existance of the message is a secret</li>
+								<li>Watermarking: The content of the message is a secret</li>
+							</ul>
+						</li>
+						<hr>
+						<li>Compared to modifying the name of a file or inserting a simple text, watermarking has three advantages:
+							<ul>
+								<li>The inserted data is imperceptible</li>
+								<li>The watermark cannot be separated from its container</li>
+								<li>The watermark undergoes the same transformation as the container</li>
+							</ul>
+						</li>
+					</ul>
 				</section>
 
 				<section>
 					<h4>Watermarking of 3D models</h4>
+					<ul>
+						<li>The same principle can be applied to 3D models</li>
+						<li>The two types of data describing a mesh can carry a message:
+							<ul>
+								<li>Connectivity: Create new faces or change the length of exisitng edges</li>
+								<li>Geometry: Slightly change the coordinates of the vertices</li>
+							</ul>
+						</li>
+						<li>The introduced modifications should be inserted in a way that  can later be interpreted either as a '0' or a '1' in order to read the message</li>
+					</ul>	
+				</section>
+
+				<section>
+					<h4>Use cases</h4>
+					<ul>
+						<li>Most use cases are directly or undirectly linked to the ownership of an object:</li>
+						<ul>
+							<li>Owner identification</li>
+							<li>Proof of ownership</li>
+							<li>Transaction tracking</li>
+							<li>Content authentication</li>
+						</ul>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Watermarking Algorithm Evaluation - Blindness</h4>
+					<ul>
+						<li>There exist three kinds of watermarking algorithms, defined as:</li>
+						<table style="margin-bottom: 0.5em">
+							<tr style="background: #fff; color: #222">
+								<th></th>
+								<th>Original model needed</th>
+								<th>Detect</th>
+								<th>Read</th>
+							</tr>
+							<tr>
+								<td>Non-Blind</td>
+								<td>&#10004</td>
+								<td>&#10004</td>
+								<td>&#10004</td>
+							</tr>
+							<tr>
+								<td>Semi-Blind</td>
+								<td>&#10006</td>
+								<td>&#10004</td>
+								<td>&#10006</td>
+							</tr>
+							<tr>
+								<td>Blind</td>
+								<td>&#10006</td>
+								<td>&#10004</td>
+								<td>&#10004</td>
+							</tr>								
+						</table>
+						<li>All watermarking algorithms presented here are <strong>BLIND</strong></li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Watermarking Algorithm Evaluation - Robustness</h4>
+					<div style="border: 2px solid #fff; margin-bottom: 0.8em">
+						The robustness of an algorithm is described using a bit error rate:
+						<br/>
+						<table style="text-align:center">
+							<tr><td># Errors</td></tr>
+							<tr><td># Bits inserted</td></tr>
+						</table>
+					</div>
+					<ul>
+						<li>Typical process can modify the geometry and/or connectivity of a mesh:
+							<ul>
+								<li>Re-meshing</li>
+								<li>Print/Scan process</li>
+							</ul>
+						</li>
+						<li>There exist also lots of possible attacks:
+							<ul>
+								<li>Noise addition</li>
+								<li>Smoothing</li>
+								<li>Cropping attack</li>
+								<li>...</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Watermarking Algorithm Evaluation - Imperceptibility</h4>
+					<ul>
+						<li>The watermark should be as imperceptible as possible</li>
+						<li>We used three different metrics to evalauate the imperceptibility of a watermark:
+							<ul>
+								<li>Root-Mean-Square Error</li>
+								<li>Hausdorff Distance</li>
+								<li>Local Smoothness</li>
+							</ul>
+						</li>
+						<li>Similar resuts for all three metrics, so we will consider only the Local Smoothness here</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Scope of this work</h4>
+					<ul>
+						<li>"<i>Watermarking of models <u>destined to 3D printing</u>"</i></li>
+						<li>Printing a mesh results in:
+							<ul>
+								<li>Completely different connectivity</li>
+								<li>Some inaccuracies in geometry</li>
+							</ul>
+						</li>
+						<li>Watermarking scheme needs to be applied on the geometry and be resistant to inaccuracies</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Volume Moments - Principles</h4>
+					<p>$m_{pqr} = \displaystyle\int_{}^{} x^p y^q z^r\ \rho (x,y,z)\ dx\;dy\;dz$,</p>
+				 	<p>$\rho(x, y, z)$ is the volume indicator function</p>
+				 	<div style="border: 2px solid #fff; float: left;">
+						<div style="width: 100%; color: #222; background: #fff"><strong>Embedding Process</strong></div>
+						<ul style="padding-left: 0.5em; padding-right: 0.5em">
+							<li style="margin-top: 0.5em">Normalization (scaling, translating and rotating)</li>
+							<li>Patches decomposition</li>
+							<li>Patches classification (cover, compensation and discarded)</li>
+							<li>Deformation of the cover patches to a selected moment's value</li>
+							<li>Compensation</li>
+						</ul>
+					</div>
+				</section>
+
+				<section>
+					<h4>Volume Moments - Results</h4>
+					<img style="float: right; width: 35%" src="img/volume_moments.png">
+					Imperceptibility
+					Bit error rate
+					Robustness to attacks
+				</section>
+
+				<section>
+					<h4>Spectral Decomposition - Principles</h4>
+					<ul>
+						<li>Work in the spectral domain: $(X, Y, Z)$ &hArr; $(P, Q, R)$</li>
+						<li>Reorder $(P, Q, R)$ &rArr; $(C_{min}, C_{inter}, C_{max})$</li>
+						<li>Divide the range $[C_{inter}, C_{max}]$ into two intervals $W_0$ and $W_1$</li>
+						<li>Place $C_{inter}$ in the $W_0$ interval if we want to insert a 0 or in $W_1$ for inserting a 1</li>
+					</ul>
+					<div>
+						<img style="float: left; width: 40%; margin-top: 0" src="img/spectral_decomposition_principle.jpg">
+						<span style="border: 2px solid white; width: 58%; float: right">
+							<div style="width: 100%; color: #222; background: #fff"><strong>Impact of the choice of frequencies on imperceptibility</strong></div>
+							<ul>
+								<li style="margin-bottom: 0"><strong>Lower frequencies</strong></li>
+								<strong>&rArr; important, localized deformations</strong>
+								<li style="margin-bottom: 0; margin-top: 0.5em"><strong>Higher frequencies</strong></li>
+								<strong >&rArr; smooth global changes</strong>
+							</ul>
+						</span>
+					</div>
+				</section>
+
+				<section>
+					<h4>Spectral Decomposition - Patch Decomposition</h4>
+					<ul>
+						<li>The transformation of coordinates into their spectra requires the computation of the eigenvalues and eigenvectors of a Laplacian matrix</li>
+						<li>The computation of eigevalues is performed in $\mathcal{O}(n^3)$ but can be reduced to $\mathcal{O}(n)$ in case of sparse matrix</li>
+						<li>We then need to divide the model into patches</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Spectral Decomposition - Results</h4>
+					<img style="float: right; width: 35%" src="img/spectral_decomposition.png">
+					Imperceptibility
+					Bit error rate
+					Robustness to attacks
+				</section>
+
+				<section>
+					<h4>Adapting Spectral Decomposition</h4>
+					<ul>
+						<li>Spectral Decomposition cannot be applied as it is to models destined to 3D printing</li>
+						<li>Find another patch decomposition not depending on the connectivity</li>
+					</ul>
+					<div style="border: 2px solid #fff; float: left; width: 60%;">
+						<div style="width: 100%; color: #222; background: #fff; margin-bottom: 0.5em"><strong>Cut the model into layers</strong></div>
+						<div style="margin: 0.5em 0.5em 0.5em 0.5em">To retrieve the exact same patches, we only need to find a single direction, the one perpendicular to the cuts</div>
+					</div>
+					<img style="float: right; width: 35%" src="img/bunny_layered.png">
+				</section>
+
+				<section>
+					<h4>Adapting Spectral Decomposition</h4>
+					<ul>
+						<li>Do not modify $z$ values to make sure that no vertex goes from one layer to another</li>
+						<li><u>Avoiding discontinuities</u>
+							<ul>
+								<li>Vertices located on cuts are duplicated, correponding vertices from each side of the cut might move independently</li>
+								<li>Discard those vertices during the embedding of the watermark to avoid discontinuities</li>
+							</ul>
+						</li>
+						<li><u>Avoiding perceptible modifications</u>
+							<ul>
+								<li>Divide the spectra into more than two intervals</li>
+								<li>Discard "unwatermarkable" patches</li>
+								<li>Select frequencies to modify</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h4>Results</h4>
+					<img style="float: right; width: 35%" src="img/layered_spectral.png">
+					Imperceptibility
+					Bit error rate
+					Robustness to attacks ? why ?
+				</section>
+
+				<section>
+					<h4>Comparison of the Algorithms</h4>
+					Imperceptibility vs robustness chart
+					Appear one by one or separated then merge
+				</section>
+
+				<section>
+					<h4>Future Work</h4>
+					<ol>
+						<li>Do not discard the vertices located on cuts but consider them in one of the two adjacent layers</li>
+						<li>Instead of leaving unchanged values of $C_{inter}$ correponding to the $z$ spectra, change the values of $C_{min}$ and $C_{max}$ accordingly</li>
+						<li>Adapting the patch decomposition into layers to many more watermarking schemes less dependent on the connectivity than the Spectral Decomposition</li>
+					</ol>
+				</section>
+
+				<section>
+					<h4>Summary</h4>
+					<ul>
+						<li>Background knowledge on 3D models and their representation</li>
+						<li>Background knowledge on watermarking in general and watermarking of 3D models</li>
+						<li>Explanation of three watermarking schemes, their implementations and evaluations regarding their robustness and imperceptibility </li>
+						<li>Comparison of those algorithms</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>Questions ?</h1>
+					<img src="img/spinning-bunny.gif">
 				</section>
 			</div>
 		</div>
@@ -60,6 +359,7 @@
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
 				dependencies: [
+					{ src: 'plugin/math/math.js'},
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
@@ -67,7 +367,10 @@
 				]
 			});
 
-			Reveal.configure({ slideNumber: 'c/t' });
+			Reveal.configure({ 
+				slideNumber: 'c/t',
+				transition: 'convex'
+			});
 		</script>
 	</body>
 </html>

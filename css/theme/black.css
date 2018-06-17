@@ -16,7 +16,7 @@ body {
 
 .reveal {
   font-family: "Source Sans Pro", Helvetica, sans-serif;
-  font-size: 42px;
+  font-size: 32px;
   font-weight: normal;
   color: #fff; }
 
@@ -116,6 +116,18 @@ body {
 .reveal ol ul {
   display: block;
   margin-left: 40px; }
+
+.reveal ul li {
+  margin-bottom: 0.8em
+}
+
+.reveal ol li {
+  margin-bottom: 0.8em
+}
+
+.reveal ul ul li {
+  margin-bottom: 0em
+}
 
 .reveal dt {
   font-weight: bold; }
