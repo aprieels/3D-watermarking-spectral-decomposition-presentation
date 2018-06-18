@@ -124,40 +124,6 @@
 				</section>
 
 				<section>
-					<h4>Watermarking Algorithm Evaluation - Blindness</h4>
-					<ul>
-						<li>There exist three kinds of watermarking algorithms, defined as:</li>
-						<table style="margin-bottom: 0.5em">
-							<tr style="background: #fff; color: #222">
-								<th></th>
-								<th>Original model needed</th>
-								<th>Detect</th>
-								<th>Read</th>
-							</tr>
-							<tr>
-								<td>Non-Blind</td>
-								<td>&#10004</td>
-								<td>&#10004</td>
-								<td>&#10004</td>
-							</tr>
-							<tr>
-								<td>Semi-Blind</td>
-								<td>&#10006</td>
-								<td>&#10004</td>
-								<td>&#10006</td>
-							</tr>
-							<tr>
-								<td>Blind</td>
-								<td>&#10006</td>
-								<td>&#10004</td>
-								<td>&#10004</td>
-							</tr>								
-						</table>
-						<li>All watermarking algorithms presented here are <strong>BLIND</strong></li>
-					</ul>
-				</section>
-
-				<section>
 					<h4>Watermarking Algorithm Evaluation - Robustness</h4>
 					<div style="border: 2px solid #fff; margin-bottom: 0.8em">
 						The robustness of an algorithm is described using a bit error rate:
@@ -196,7 +162,7 @@
 								<li>Local Smoothness</li>
 							</ul>
 						</li>
-						<li>Similar resuts for all three metrics, so we will consider only the Local Smoothness here</li>
+						<li>Similar resuts for all three metrics, so we will consider only the Hausdorff distance here</li>
 					</ul>
 				</section>
 
@@ -232,10 +198,21 @@
 
 				<section>
 					<h4>Volume Moments - Results</h4>
-					<img style="float: right; width: 35%" src="img/volume_moments.png">
-					Imperceptibility
-					Bit error rate
-					Robustness to attacks
+					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
+						<img src="img/volume_moments.png">
+					</div>
+				</section>
+
+				<section>
+					<h4>Volume Moments - Results</h4>
+					<ul>
+						<li>Bit error rate between $10$ and $20\%$</li>
+						<li>Watermark completely lost after a smoothing of 7 iterations</li>
+						<li>Resists to noise up to an amplitude of $3\%$ </li>
+					</ul>
+					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
+						<img src="img/ber_volume_moments.jpg">
+					</div>
 				</section>
 
 				<section>
@@ -271,10 +248,21 @@
 
 				<section>
 					<h4>Spectral Decomposition - Results</h4>
-					<img style="float: right; width: 35%" src="img/spectral_decomposition.png">
-					Imperceptibility
-					Bit error rate
-					Robustness to attacks
+					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
+						<img src="img/spectral_decomposition.png">
+					</div>
+				</section>
+
+				<section>
+					<h4>Spectral Decomposition - Results</h4>
+					<ul>
+						<li>Bit error rate nearly equal to zero with only $10\%$ of frequencies modified</li>
+						<li>Watermark completely lost after a smoothing of 2 to 3 iterations</li>
+						<li>Highly resistant to noise up to an amplitude of $10\%$ </li>
+					</ul>
+					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
+						<img src="img/ber_spectral_decomposition.jpg">
+					</div>
 				</section>
 
 				<section>
@@ -311,17 +299,36 @@
 				</section>
 
 				<section>
-					<h4>Results</h4>
-					<img style="float: right; width: 35%" src="img/layered_spectral.png">
-					Imperceptibility
-					Bit error rate
-					Robustness to attacks ? why ?
+					<h4>Spectral Decomposition with Layers - Results</h4>
+					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
+						<img src="img/layered_spectral.png">
+					</div>
+				</section>
+
+				<section>
+					<h4>Spectral Decomposition with Layers - Results</h4>
+					<ul>
+						<li>The robustness depends on the number of layers created</li>
+						<li>The more layerrs are created, the greter is the bit error rate</li>
+						<li>Watermark completely lost after a smoothing of a single iteration and an addition of noise with an amplitude as small as $1\%$</li>
+					</ul>
+					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
+						<img src="img/ber_layered_spectral.jpg">
+					</div>
 				</section>
 
 				<section>
 					<h4>Comparison of the Algorithms</h4>
-					Imperceptibility vs robustness chart
-					Appear one by one or separated then merge
+					<div style="background: #fff">
+						<img style="width: 30%" src="img/comparison_moments.jpg">
+						<img style="width: 30%" src="img/comparison_spectral.jpg">
+						<img style="width: 30%" src="img/comparison_layered.jpg">
+					</div>
+					<table style="margin-left: 2.5%">
+						<tr>
+							<td style="width: 30%; text-align: center">Volume Moments</td> <td style="width: 30%; text-align: center">Spectral Decomposition (Patches)</td> <td style="width: 30%; text-align: center">Spectral Decomposition (Layers)</td>
+						</tr>
+					</table>
 				</section>
 
 				<section>
