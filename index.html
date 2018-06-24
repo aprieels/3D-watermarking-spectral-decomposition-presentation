@@ -30,6 +30,9 @@
 					<h3>by Deformation of Surfaces</h3>
 					<p>Presented by Antoine Prieëls</p>
 					<p>Supervised by Benoît Macq</p>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -38,10 +41,9 @@
 						<li style="margin-bottom: 0">Digital Models Representation and Processing</li>
 						<ul>
 							<li>Mesh Representation</li>
-							<li>Digital Watermarking</li>
 							<li>Watermarking of 3D models</li>
 							<li>Use cases</li>
-							<li>Watermarking Algorithm Evaluation</li>
+							<li>Watermarking Algorithms Evaluation</li>
 							<li>Scope of this work</li>
 						</ul>
 						<li style="margin-bottom: 0">Watermarking Algorithms</li>
@@ -54,6 +56,9 @@
 						<li style="margin-bottom: 0">Future Work</li>
 						<li style="margin-bottom: 0">Summary</li>
 					</ul>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -72,48 +77,33 @@
 						<ul style="width: 85%; margin-top: 0.5em; margin-bottom: 0.5em"><li style="margin-bottom: 0">Set of faces that link the vertices to one another</li></ul>
 						<img src="img/bunny_connectivity.png">
 					</div>
-				</section>
-
-				<section>
-					<h4>Digital Watermarking</h4>
-					<ul>
-						<li>Information hiding: process of hiding messages or data into another container</li>
-						<hr>
-						<li>We differenciate:
-							<ul>
-								<li>Steganography: The existance of the message is a secret</li>
-								<li>Watermarking: The content of the message is a secret</li>
-							</ul>
-						</li>
-						<hr>
-						<li>Compared to modifying the name of a file or inserting a simple text, watermarking has three advantages:
-							<ul>
-								<li>The inserted data is imperceptible</li>
-								<li>The watermark cannot be separated from its container</li>
-								<li>The watermark undergoes the same transformation as the container</li>
-							</ul>
-						</li>
-					</ul>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
 					<h4>Watermarking of 3D models</h4>
 					<ul>
-						<li>The same principle can be applied to 3D models</li>
+						<li>Digital watermarking: process of hiding digital information in a noise-tolerant container</li>
+						<li>Possible containers include: videos, audio, images or 3D models</li>
 						<li>The two types of data describing a mesh can carry a message:
 							<ul>
-								<li>Connectivity: Create new faces or change the length of exisitng edges</li>
+								<li>Connectivity: Create new faces or change the length of existing edges</li>
 								<li>Geometry: Slightly change the coordinates of the vertices</li>
 							</ul>
 						</li>
-						<li>The introduced modifications should be inserted in a way that  can later be interpreted either as a '0' or a '1' in order to read the message</li>
-					</ul>	
+						<li>The introduced modifications should be inserted in a way that can later be interpreted either as a '0' or a '1' in order to read the message</li>
+					</ul>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
 					<h4>Use cases</h4>
 					<ul>
-						<li>Most use cases are directly or undirectly linked to the ownership of an object:</li>
+						<li>Most use cases are directly or indirectly linked to the ownership of an object:</li>
 						<ul>
 							<li>Owner identification</li>
 							<li>Proof of ownership</li>
@@ -121,10 +111,13 @@
 							<li>Content authentication</li>
 						</ul>
 					</ul>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
-					<h4>Watermarking Algorithm Evaluation - Robustness</h4>
+					<h4>Watermarking Algorithms Evaluation - Robustness</h4>
 					<div style="border: 2px solid #fff; margin-bottom: 0.8em">
 						The robustness of an algorithm is described using a bit error rate:
 						<br/>
@@ -140,7 +133,7 @@
 								<li>Print/Scan process</li>
 							</ul>
 						</li>
-						<li>There exist also lots of possible attacks:
+						<li>There also exist lots of possible attacks:
 							<ul>
 								<li>Noise addition</li>
 								<li>Smoothing</li>
@@ -149,21 +142,27 @@
 							</ul>
 						</li>
 					</ul>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
-					<h4>Watermarking Algorithm Evaluation - Imperceptibility</h4>
+					<h4>Watermarking Algorithms Evaluation - Imperceptibility</h4>
 					<ul>
 						<li>The watermark should be as imperceptible as possible</li>
-						<li>We used three different metrics to evalauate the imperceptibility of a watermark:
+						<li>We used three different metrics to evaluate the imperceptibility of a watermark:
 							<ul>
 								<li>Root-Mean-Square Error</li>
 								<li>Hausdorff Distance</li>
 								<li>Local Smoothness</li>
 							</ul>
 						</li>
-						<li>Similar resuts for all three metrics, so we will consider only the Hausdorff distance here</li>
+						<li>Similar results for all three metrics, so we will consider only the Hausdorff distance here</li>
 					</ul>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -178,6 +177,9 @@
 						</li>
 						<li>Watermarking scheme needs to be applied on the geometry and be resistant to inaccuracies</li>
 					</ul>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -190,10 +192,13 @@
 							<li style="margin-top: 0.5em">Normalization (scaling, translating and rotating)</li>
 							<li>Patches decomposition</li>
 							<li>Patches classification (cover, compensation and discarded)</li>
-							<li>Deformation of the cover patches to a selected moment's value</li>
+							<li>Deformation of the cover patches to a selected moment value</li>
 							<li>Compensation</li>
 						</ul>
 					</div>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -201,6 +206,9 @@
 					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
 						<img src="img/volume_moments.png">
 					</div>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -213,6 +221,9 @@
 					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
 						<img src="img/ber_volume_moments.jpg">
 					</div>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -221,7 +232,7 @@
 						<li>Work in the spectral domain: $(X, Y, Z)$ &hArr; $(P, Q, R)$</li>
 						<li>Reorder $(P, Q, R)$ &rArr; $(C_{min}, C_{inter}, C_{max})$</li>
 						<li>Divide the range $[C_{inter}, C_{max}]$ into two intervals $W_0$ and $W_1$</li>
-						<li>Place $C_{inter}$ in the $W_0$ interval if we want to insert a 0 or in $W_1$ for inserting a 1</li>
+						<li>Place $C_{inter}$ in the $W_0$ interval if we want to insert a '0' or in $W_1$ for inserting a '1'</li>
 					</ul>
 					<div>
 						<img style="float: left; width: 40%; margin-top: 0" src="img/spectral_decomposition_principle.jpg">
@@ -235,15 +246,21 @@
 							</ul>
 						</span>
 					</div>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
 					<h4>Spectral Decomposition - Patch Decomposition</h4>
 					<ul>
 						<li>The transformation of coordinates into their spectra requires the computation of the eigenvalues and eigenvectors of a Laplacian matrix</li>
-						<li>The computation of eigevalues is performed in $\mathcal{O}(n^3)$ but can be reduced to $\mathcal{O}(n)$ in case of sparse matrix</li>
+						<li>The computation of eigenvalues is performed in $\mathcal{O}(n^3)$ but can be reduced to $\mathcal{O}(n)$ in case of a sparse matrix</li>
 						<li>We then need to divide the model into patches</li>
 					</ul>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -251,6 +268,9 @@
 					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
 						<img src="img/spectral_decomposition.png">
 					</div>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -263,6 +283,9 @@
 					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
 						<img src="img/ber_spectral_decomposition.jpg">
 					</div>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -276,6 +299,9 @@
 						<div style="margin: 0.5em 0.5em 0.5em 0.5em">To retrieve the exact same patches, we only need to find a single direction, the one perpendicular to the cuts</div>
 					</div>
 					<img style="float: right; width: 35%" src="img/bunny_layered.png">
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -284,7 +310,7 @@
 						<li>Do not modify $z$ values to make sure that no vertex goes from one layer to another</li>
 						<li><u>Avoiding discontinuities</u>
 							<ul>
-								<li>Vertices located on cuts are duplicated, correponding vertices from each side of the cut might move independently</li>
+								<li>Vertices located on cuts are duplicated, corresponding vertices from each side of the cut might move independently</li>
 								<li>Discard those vertices during the embedding of the watermark to avoid discontinuities</li>
 							</ul>
 						</li>
@@ -296,6 +322,9 @@
 							</ul>
 						</li>
 					</ul>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -303,18 +332,24 @@
 					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
 						<img src="img/layered_spectral.png">
 					</div>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
 					<h4>Spectral Decomposition with Layers - Results</h4>
 					<ul>
 						<li>The robustness depends on the number of layers created</li>
-						<li>The more layerrs are created, the greter is the bit error rate</li>
+						<li>The more layers are created, the greater is the bit error rate</li>
 						<li>Watermark completely lost after a smoothing of a single iteration and an addition of noise with an amplitude as small as $1\%$</li>
 					</ul>
 					<div style="margin-left: 25%; margin-right: 25%; width: 50%">
 						<img src="img/ber_layered_spectral.jpg">
 					</div>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -329,15 +364,21 @@
 							<td style="width: 30%; text-align: center">Volume Moments</td> <td style="width: 30%; text-align: center">Spectral Decomposition (Patches)</td> <td style="width: 30%; text-align: center">Spectral Decomposition (Layers)</td>
 						</tr>
 					</table>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
 					<h4>Future Work</h4>
 					<ol>
 						<li>Do not discard the vertices located on cuts but consider them in one of the two adjacent layers</li>
-						<li>Instead of leaving unchanged values of $C_{inter}$ correponding to the $z$ spectra, change the values of $C_{min}$ and $C_{max}$ accordingly</li>
+						<li>Instead of leaving unchanged values of $C_{inter}$ corresponding to the $z$ spectra, change the values of $C_{min}$ and $C_{max}$ accordingly</li>
 						<li>Adapting the patch decomposition into layers to many more watermarking schemes less dependent on the connectivity than the Spectral Decomposition</li>
 					</ol>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
@@ -345,9 +386,12 @@
 					<ul>
 						<li>Background knowledge on 3D models and their representation</li>
 						<li>Background knowledge on watermarking in general and watermarking of 3D models</li>
-						<li>Explanation of three watermarking schemes, their implementations and evaluations regarding their robustness and imperceptibility </li>
+						<li>Explanation of three watermarking schemes, their implementations, and evaluations regarding their robustness and imperceptibility </li>
 						<li>Comparison of those algorithms</li>
 					</ul>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section>
