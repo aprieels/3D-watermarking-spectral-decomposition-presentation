@@ -87,13 +87,13 @@
 					<ul>
 						<li>Digital watermarking: process of hiding digital information in a noise-tolerant container</li>
 						<li>Possible containers include: videos, audio, images or 3D models</li>
+						<li>The introduced noise should be inserted in a way that can later be interpreted either as a '0' or a '1' in order to read the message</li>
 						<li>The two types of data describing a mesh can carry a message:
 							<ul>
-								<li>Connectivity: Create new faces or change the length of existing edges</li>
 								<li>Geometry: Slightly change the coordinates of the vertices</li>
+								<li>Connectivity: Create new faces or change the length of existing edges</li>
 							</ul>
 						</li>
-						<li>The introduced modifications should be inserted in a way that can later be interpreted either as a '0' or a '1' in order to read the message</li>
 					</ul>
 					<aside class="notes">
 						Processus qui consiste à cacher de l'information dans des récipients digitaux
@@ -127,12 +127,6 @@
 						</table>
 					</div>
 					<ul>
-						<li>Typical process can modify the geometry and/or connectivity of a mesh:
-							<ul>
-								<li>Re-meshing</li>
-								<li>Print/Scan process</li>
-							</ul>
-						</li>
 						<li>There also exist lots of possible attacks:
 							<ul>
 								<li>Noise addition</li>
@@ -140,6 +134,12 @@
 								<li>Cropping attack</li>
 								<li>Re-meshing</li>
 								<li>...</li>
+							</ul>
+						</li>
+						<li>Typical process can also modify the geometry and/or connectivity of a mesh:
+							<ul>
+								<li>Re-meshing</li>
+								<li>Print/Scan process</li>
 							</ul>
 						</li>
 					</ul>
@@ -235,7 +235,7 @@
 					<ul>
 						<li>Work in the spectral domain: $(X, Y, Z)$ &hArr; $(P, Q, R)$</li>
 						<li>Reorder $(P, Q, R)$ &rArr; $(C_{min}, C_{inter}, C_{max})$</li>
-						<li>Divide the range $[C_{inter}, C_{max}]$ into two intervals $W_0$ and $W_1$</li>
+						<li>Divide the range $[C_{min}, C_{max}]$ into two intervals $W_0$ and $W_1$</li>
 						<li>Place $C_{inter}$ in the $W_0$ interval if we want to insert a '0' or in $W_1$ for inserting a '1'</li>
 					</ul>
 					<div>
@@ -322,7 +322,6 @@
 							<ul>
 								<li>Divide the spectra into more than two intervals</li>
 								<li>Discard "unwatermarkable" patches</li>
-								<li>Select frequencies to modify</li>
 							</ul>
 						</li>
 					</ul>
